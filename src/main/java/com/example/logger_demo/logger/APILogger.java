@@ -62,9 +62,9 @@ public class APILogger {
     }
 
     public void logSuccess(int statusCode) {
+        while(endTask());
         add("reason", "success");
         add("status", statusCode);
-        while(endTask());
         calculateExecutionTime(nestedTaskLogs.peek());
         log.info(gson.toJson(nestedTaskLogs.peek()));
     }
